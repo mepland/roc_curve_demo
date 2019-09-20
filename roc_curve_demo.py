@@ -145,7 +145,7 @@ models_for_roc= [
 # In[12]:
 
 
-pop_TPR = len(np.where(y_holdout == 1)[0]) / len(y_holdout) # P / (P + N)
+pop_PPV = len(np.where(y_holdout == 1)[0]) / len(y_holdout) # P / (P + N)
 
 
 # In[13]:
@@ -156,7 +156,7 @@ inline=True
 
 # ### Standard TPR vs FPR ROC
 
-# In[15]:
+# In[18]:
 
 
 plot_rocs(models_for_roc, rndGuess=True, inverse_log=False, inline=inline)
@@ -164,7 +164,7 @@ plot_rocs(models_for_roc, rndGuess=True, inverse_log=False, inline=inline)
 
 # #### Inverse Log TPR vs FPR ROC
 
-# In[16]:
+# In[15]:
 
 
 plot_rocs(models_for_roc, rndGuess=True, inverse_log=True,
@@ -173,17 +173,17 @@ plot_rocs(models_for_roc, rndGuess=True, inverse_log=True,
 
 # ### Precision vs Recall ROC
 
-# In[17]:
+# In[16]:
 
 
-plot_rocs(models_for_roc, rndGuess=True, inverse_log=False, precision_recall=True, pop_TPR=pop_TPR,
+plot_rocs(models_for_roc, rndGuess=True, inverse_log=False, precision_recall=True, pop_PPV=pop_PPV,
           y_axis_params={'min': 0.0}, inline=inline)
 
 
 # #### Inverse Log Precision vs Recall ROC
 
-# In[18]:
+# In[17]:
 
 
-plot_rocs(models_for_roc, rndGuess=False, inverse_log=True, precision_recall=True, pop_TPR=pop_TPR, inline=inline)
+plot_rocs(models_for_roc, rndGuess=False, inverse_log=True, precision_recall=True, pop_PPV=pop_PPV, inline=inline)
 

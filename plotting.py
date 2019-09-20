@@ -52,7 +52,7 @@ std_ann_y = 0.94
 
 ########################################################
 # plot overlaid roc curves for many models
-def plot_rocs(models, m_path='output', fname='roc', tag='', rndGuess=False, better_ann=True, grid=False, inverse_log=False, precision_recall=False, pop_TPR=None, x_axis_params=None, y_axis_params=None, inline=False):
+def plot_rocs(models, m_path='output', fname='roc', tag='', rndGuess=False, better_ann=True, grid=False, inverse_log=False, precision_recall=False, pop_PPV=None, x_axis_params=None, y_axis_params=None, inline=False):
 	fig, ax = plt.subplots()
 
 	x_var = 'fpr'
@@ -99,16 +99,16 @@ def plot_rocs(models, m_path='output', fname='roc', tag='', rndGuess=False, bett
 				x = np.linspace(0., 1.)
 				ax.plot(x, x, color='grey', linestyle=':', linewidth=2, label='Random Guess')
 		else:
-			if pop_TPR is None:
-				raise ValueError('Need pop_TPR to plot random guess curve for precision_recall!')
+			if pop_PPV is None:
+				raise ValueError('Need pop_PPV to plot random guess curve for precision_recall!')
 			if inverse_log:
 				x = np.linspace(1e-10, 1.)
-				y = pop_TPR*np.ones(len(x))
-				ax.plot(x, 1/y, color='grey', linestyle=':', linewidth=2, label=f'Random Guess, TPR = {pop_TPR:.2f}')
+				y = pop_PPV*np.ones(len(x))
+				ax.plot(x, 1/y, color='grey', linestyle=':', linewidth=2, label=f'Random Guess, PPV = {pop_PPV:.2f}')
 			else:
 				x = np.linspace(0., 1.)
-				y = pop_TPR*np.ones(len(x))
-				ax.plot(x, y, color='grey', linestyle=':', linewidth=2, label=f'Random Guess, TPR = {pop_TPR:.2f}')
+				y = pop_PPV*np.ones(len(x))
+				ax.plot(x, y, color='grey', linestyle=':', linewidth=2, label=f'Random Guess, PPV = {pop_PPV:.2f}')
 
 	leg = ax.legend(loc=leg_loc,frameon=False)
 	leg.get_frame().set_facecolor('none')
